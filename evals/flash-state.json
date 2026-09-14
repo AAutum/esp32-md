@@ -1,0 +1,6 @@
+{
+  "_comment": "Record which model is on which board after EVERY flash. USB history lies; this file doesn't.",
+  "general":  {"model_md5": "45cb7cf08dc6ef3e8aabb275b3dbfb27", "flashed": "2026-09-13", "size_bytes": 9435076},
+  "reasoning": {"model_md5": "45cb7cf08dc6ef3e8aabb275b3dbfb27", "flashed": "2026-09-13", "size_bytes": 9435076},
+  "code": {"status": "trained, not flashed"}
+}

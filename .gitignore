@@ -1,0 +1,23 @@
+# Build artifacts
+build/
+build2/
+*.o
+*.elf
+*.map
+*.bin.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Expert torch checkpoints stay out (70MB each; reproduce via training pipeline)
+checkpoints/*.pt
+
+# Hardware backups contain device-identifying data — never publish
+fleet/
+logs/
+
+# Editor
+.vscode/
+.idea/

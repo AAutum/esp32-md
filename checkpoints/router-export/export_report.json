@@ -1,0 +1,27 @@
+{
+  "tag": "router-3exp-s0",
+  "params": 2167299,
+  "config": {
+    "vocab_size": 32768,
+    "d_model": 64,
+    "n_layers": 2,
+    "n_heads": 2,
+    "n_experts": 3,
+    "seq_len": 64,
+    "pool": "mean"
+  },
+  "bin_bytes": 2239090,
+  "bin_md5": "73d2eff1a5864478bc7cccb33fbfdacd",
+  "bin_path": "checkpoints/router-export/router_model.bin",
+  "val_acc_int8": 0.9333333373069763,
+  "val_acc_fp32": 0.9333333373069763,
+  "logits_cos_int8_vs_fp32": {
+    "mean": 0.999989926815033,
+    "min": 0.9990921020507812
+  },
+  "top2_margin_int8": {
+    "mean": 17.76735496520996,
+    "min": 0.25139737129211426
+  },
+  "note": "margin is int8 logit top1-top2 gap; HW flip risk concentrates on min-margin rows"
+}
