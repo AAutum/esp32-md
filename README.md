@@ -1,9 +1,9 @@
-# ESP32 Model Dispatch — specialized language models routed on $8 microcontrollers
+# ESP32 Model Dispatch
 
 Run three domain-specialized language models (code / reasoning / general) across
-ESP32-S3 microcontrollers -- no cloud, no API keys, no datacenter. A tiny
-**dispatch model** (a classifier) looks at your query and sends it to the model
-best suited for it. Text in, routed to hardware, generated text out.
+ESP32-S3 microcontrollers. A tiny **dispatch model** (a classifier) looks 
+at your query and sends it to the model best suited for it. 
+Text in, routed to hardware, generated text out.
 
 > **Terminology:** this is a *model dispatch* system (BTX family: learned-routing
 > expert ensemble, sequence-level routing). Each expert is a complete standalone
@@ -109,10 +109,26 @@ docs/                DESIGN.md (the manual), PORT-PLAN.md (build history)
 Checkpoints for the three experts are not included (70 MB torch files); the
 training pipeline reproduces them from `data/`.
 
+## Known limitations and issues
+
+Testing shows two distinct failure modes rather than a single “weak model.” 
+Routing is highly confident but consistently misclassifies code inputs. 
+For example `def test(x):` was routed to the general specialist at 0.68 confidence instead of to code. 
+Separately, generation quality varies by specialist. 
+The general specialist produces coherent text (e.g. a clean continuation of “Once upon a time…”). 
+The reasoning specialist produces an incoherent response to a simple arithmetic problem, 
+often responding with learned training data.
+
+## Future Plans
+* Narrow specialist training and provide more training
+* Fine-tune router training to improve classification
+
+
+
 ## Credits & license
 
 - Expert runtime, PLE architecture, and training toolkit are vendored from
-  [slvDev/esp32-ai](https://github.com/slvDev/esp32-ai) (MIT) — an excellent
+  [slvDev/esp32-ai](https://github.com/slvDev/esp32-ai) (MIT) an excellent
   project that runs a 28.9M-param LM on an ESP32-S3. See `firmware/tools/`
   and `firmware/common/llm.h`.
 - General expert trained on [TinyStories](https://arxiv.org/abs/2305.07759)
