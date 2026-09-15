@@ -1,7 +1,7 @@
 # ESP32 Model Dispatch — specialized language models routed on $8 microcontrollers
 
 Run three domain-specialized language models (code / reasoning / general) across
-ESP32-S3 microcontrollers — no cloud, no API keys, no datacenter. A tiny
+ESP32-S3 microcontrollers -- no cloud, no API keys, no datacenter. A tiny
 **dispatch model** (a classifier) looks at your query and sends it to the model
 best suited for it. Text in, routed to hardware, generated text out.
 
@@ -31,14 +31,6 @@ best suited for it. Text in, routed to hardware, generated text out.
            └────────┬─────────────┘
                   weighted merge → decoded text
 ```
-
-## Proven on hardware (2026-09-14)
-
-- Story prompt → dispatched **general** expert → coherent TinyStories text
-- "What is 77 - 79?" → dispatched **reasoning** expert → `Answer: -1` (correct,
-  including the negative)
-- Dispatch node verified against golden vectors: 184 vectors, cosine ≥ 0.9999998,
-  top-1 agreement 100% with the host simulation
 
 ## What's in the box
 
